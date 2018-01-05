@@ -1,0 +1,25 @@
+db.createCollection("entries", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "id", "title", "text" ],
+         properties: {
+            id: {
+               bsonType: "string",
+               description: "must be a string and is required"
+            },
+            title: {
+               bsonType: "string",
+               description: "must be a string and is not required"
+            },
+            text: {
+               bsonType: "int",
+               minimum: 2017,
+               maximum: 3017,
+               exclusiveMaximum: false,
+               description: "must be an integer in [ 2017, 3017 ] and is required"
+            }
+         }
+      }
+   }
+})
